@@ -67,10 +67,7 @@
         [self.contentView addSubview:_readMessageImageView];
         
         [self.contentView addSubview:_nameLabel];
-        
-        UITapGestureRecognizer * profileTouched = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showProfileView)];
-        _profilePicture.userInteractionEnabled = YES;
-        [_profilePicture addGestureRecognizer:profileTouched];
+
     }
     return self;
 }
@@ -232,18 +229,6 @@
 
 +(BOOL) profilePictureHidden: (id<PElmMessage>) message {
     return message.thread.type.intValue & bThreadType1to1 && ![BChatSDK config].showUserAvatarsOn1to1Threads;
-}
-
-// Open the users profile
--(void) showProfileView {
-    
-    // Cannot view our own profile this way
-    if (![_message.userModel.entityID isEqualToString:NM.currentUser.entityID]) {
-        
-        
-        UIViewController * profileView = [[BInterfaceManager sharedManager].a profileViewControllerWithUser:_message.userModel];
-        [self.navigationController pushViewController:profileView animated:YES];
-    }
 }
 
 // Format the cells properly when the device orientation changes

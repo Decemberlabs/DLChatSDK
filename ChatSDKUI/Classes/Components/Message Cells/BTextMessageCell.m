@@ -47,6 +47,12 @@
     return self;
 }
 
+-(void) layoutSubviews {
+  [super layoutSubviews];
+  
+  self.backgroundColor = [UIColor clearColor];
+}
+
 -(void) setMessage: (id<PElmMessage, PMessageLayout>) message withColorWeight:(float)colorWeight {
     [super setMessage:message withColorWeight:colorWeight];
     
